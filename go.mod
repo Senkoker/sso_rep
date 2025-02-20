@@ -1,2 +1,1 @@
-module github.com/Senkoker/sso_rep
-
+module github.com/Senkoker/sso_project
