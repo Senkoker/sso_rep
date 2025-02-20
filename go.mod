@@ -1,1 +1,2 @@
-module projectproto
+module github.com/Senkoker/sso_rep
+
