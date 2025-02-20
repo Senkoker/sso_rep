@@ -1,0 +1,61 @@
+syntax = "proto3";
+package sso;
+option go_package = "my_sso.com/services:sso_test";
+
+// определение первого сервиса
+
+service Auth {
+  rpc Register (RequestRegister) returns (ResponseRegister);
+  rpc Login (RequestLogin) returns (ResponseLogin);
+  rpc IsAdmin (RequestIsAdmin) returns (ResponseIsAdmin);
+}
+
+service ApplyEmail {
+  rpc Apply (ApplyRequest) returns (ApplyResponse);
+  rpc Retry (RetryRequest) returns (RetryResponse);
+}
+
+message RequestRegister{
+  string email = 1;
+  string password = 2;
+  string username = 3;
+}
+
+message ResponseRegister{
+  string username= 1;
+  string token = 2;
+}
+
+message RequestLogin {
+  string email = 1;
+  string password = 2;
+}
+
+message ResponseLogin {
+  string token = 1;
+}
+
+message RequestIsAdmin {
+  string email = 1;
+}
+
+message ResponseIsAdmin{
+  bool response = 1;
+}
+
+message ApplyRequest{
+  string token = 1;
+  string secrete_code = 2;
+}
+
+message ApplyResponse{
+  bool apply = 1;
+}
+
+message RetryRequest {
+  string token = 1;
+}
+
+message RetryResponse {
+  bool response = 1;
+}
